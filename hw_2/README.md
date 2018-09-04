@@ -41,4 +41,4 @@ As all of the material covered in the first two weeks of class have been entirel
 
 ## Image
 
-![My Screenshot](hw_2/week2_screen_shot.png)
+![My screen shot](/hw_2/week2_screen_shot.png)
