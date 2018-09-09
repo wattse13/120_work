@@ -1,7 +1,7 @@
 // Place to define beginning project environment.
 function setup(){
 
-  // Defines how large web canvas should be which in this case is 600px by 400px.
+  // Defines how large web canvas should be which in this case is 800px by 800px.
   createCanvas( 800, 800 );
 
     // Defines what color the web canvas background should be.
