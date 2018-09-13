@@ -51,3 +51,7 @@ This isn't related directly to the homework assignment, but I am also worried th
 ## Closing Thoughts
 
 I am excited to start coding. Playing around with different shapes and colors is fun, and I am often surprised how straight forward a lot of the function names are. At the moment, it's a little difficult to imagine how I will ever be able to write any complex programs, especially when looking at some high-end art pieces written by exprienced users, but I trust that given a lot of time I'll make some progress.
+
+## Edit
+
+I did try and help Hayley with a problem she posted to our class repository. Unfortunately, I don't know how successful I was as I didn't quite understand her problem and she closed the thread before I could see if she made an update or not.
