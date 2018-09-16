@@ -29,10 +29,11 @@ push();
       push();
 
         // Gums or lips
-        stroke('rgb(80, 35, 100)');
-        strokeWeight(20);
+        // stroke('rgb(80, 35, 100)');
+        // strokeWeight(20);
 
         // Outer mouth
+        noStroke();
         fill('rgb(60, 35, 75)');
         ellipse( -100, 100, 300 );
 
@@ -107,6 +108,78 @@ push();
 
     pop();
 
+//Outer Teeth
+
+      //Outer teeth sandbox
+      push();
+
+        //Centered grid in inner mouth.
+        translate( -100, 100 );
+
+          //First outer tooth sandbox
+          push();
+
+            //Moved grid center
+            translate( 0, 90 );
+
+            //Colored and shaped first outer tooth
+            fill('white');
+            arc( 5, 0, 135, 135, radians(45), radians(135) );
+
+          pop();
+
+          //Second outer tooth sandbox
+          push();
+
+            //Reflecting second tooth across the x axis
+            scale( 1, -1 );
+
+            //Rotating grid by 66 degrees
+            rotate( radians(66));
+
+            //Moved grid center
+            translate( 0, 90 );
+
+            //Colored and shaped second outer tooth
+            fill('white');
+            arc( 5, 0, 135, 135, radians(45), radians(135) );
+
+          pop();
+
+          //Third outer tooth sandbox
+          push();
+
+            //Reflecting second tooth across the x axis
+            scale( 1, -1 );
+
+            //Rotated grid by 294 degrees
+            rotate( radians(294));
+
+            //Moved grid center
+            translate( 0, 90 );
+
+            //Colored and shaped third outer tooth
+            fill('white');
+            arc( 5, 0, 135, 135, radians(45), radians(135) );
+
+          pop();
+
+        pop();
+
+  /****************************************************************************/
+  //lips
+  /****************************************************************************/
+
+  //Created lips sandbox
+  push();
+
+    //Shaped and colored lips
+    stroke('rgb(80, 35, 100)');
+    strokeWeight(20);
+    noFill();
+    ellipse( -100, 100, 300 );
+
+  pop();
 
 pop();
 
