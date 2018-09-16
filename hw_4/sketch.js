@@ -15,32 +15,43 @@ push();
   //Centered 'grid' in middle of canvas.
   translate( 300, 300 );
 
-  //Used ellipse to see if grid was centered correctly.
-  // ellipse( 0, 0, 50 );
+  /****************************************************************************/
+  //Body
+  /****************************************************************************/
+
+  //Sandbox for body
+  push();
+
+    //Moved grid
+    translate( 75, 75 );
+
+    //Rotated grid counter-clockwise by 30 degrees
+    rotate( radians(-30));
+
+    //Shaped and colored body
+    fill('rgb(40, 0, 42)');
+    ellipse( 0, 0, 600, 350 );
+
+  pop();
 
   /****************************************************************************/
   //Mouth
   /****************************************************************************/
 
-  //created new sandbox for mouth section of monster.
+  //Created new sandbox for mouth section of monster.
   push();
 
-      // Sandbox for outer mouth
-      // push();
+    // Outer mouth shape and color
+    noStroke();
+    fill('rgb(60, 35, 75)');
+    ellipse( -100, 100, 300 );
 
-        // Outer mouth
-        noStroke();
-        fill('rgb(60, 35, 75)');
-        ellipse( -100, 100, 300 );
-
-      // pop();
-
-    //Mouth middle
+    //Mouth middle shape and color
     noStroke();
     fill('rgb( 40, 35, 50 )');
     ellipse( -100, 100, 200 );
 
-    //Mouth center
+    //Mouth center shape and color
     fill('black');
     ellipse( -100, 100, 100 );
 
@@ -63,7 +74,7 @@ push();
           translate( 25, 0 );
 
           //Colored and created tooth shape
-          fill( 'white');
+          fill( 'rgb(62, 75, 5)');
           arc( 0, 10, 50, 50, 0, QUARTER_PI );
 
         pop();
@@ -72,14 +83,14 @@ push();
       //Second tooth sandbox
       push();
 
-        //Reflecting tooth across the y axis
+        //Reflected tooth across the y axis
         scale( -1, 1 );
 
         //Moved grid center
         translate( 25, 0 );
 
         //Colored and created second tooth shape
-        fill( 'white');
+        fill( 'rgb(63, 75, 5)');
         arc( 0, 10, 50, 50, 0, QUARTER_PI );
 
       pop();
@@ -87,7 +98,7 @@ push();
       //Third tooth Sandbox
       push();
 
-        //Reflecting tooth across x axis
+        //Reflected tooth across x axis
         scale( 1, -1 );
 
         //Moved grid center
@@ -97,7 +108,7 @@ push();
         rotate( radians(66));
 
         //Colored and created third tooth shape
-        fill('white');
+        fill('rgb(63, 75, 5)');
         arc( 0, 10, 50, 50, 0, QUARTER_PI );
 
       pop();
@@ -119,7 +130,7 @@ push();
             translate( 0, 90 );
 
             //Colored and shaped first outer tooth
-            fill('white');
+            fill('rgb(200, 215, 5)');
             arc( 5, 0, 135, 135, radians(45), radians(135) );
 
           pop();
@@ -127,17 +138,17 @@ push();
           //Second outer tooth sandbox
           push();
 
-            //Reflecting second tooth across the x axis
+            //Reflected second tooth across the x axis
             scale( 1, -1 );
 
-            //Rotating grid by 66 degrees
+            //Rotated grid by 66 degrees
             rotate( radians(66));
 
             //Moved grid center
             translate( 0, 90 );
 
             //Colored and shaped second outer tooth
-            fill('white');
+            fill('rgb(200, 215, 5)');
             arc( 5, 0, 135, 135, radians(45), radians(135) );
 
           pop();
@@ -145,7 +156,7 @@ push();
           //Third outer tooth sandbox
           push();
 
-            //Reflecting second tooth across the x axis
+            //Reflected second tooth across the x axis
             scale( 1, -1 );
 
             //Rotated grid by 294 degrees
@@ -155,7 +166,7 @@ push();
             translate( 0, 90 );
 
             //Colored and shaped third outer tooth
-            fill('white');
+            fill('rgb(200, 215, 5)');
             arc( 5, 0, 135, 135, radians(45), radians(135) );
 
           pop();
@@ -181,7 +192,7 @@ push();
       //Sandbox for right eyestalk
       push();
 
-        //Reflecting left eyestalk across y axis
+        //Reflected left eyestalk across y axis
         scale( -1, 1 );
 
         //Right eye stalk line and color
@@ -237,7 +248,7 @@ push();
   //Created lips sandbox
   push();
 
-    //Shaped and colored lips
+    //Lips shape and color
     stroke('rgb(80, 35, 100)');
     strokeWeight(20);
     noFill();
