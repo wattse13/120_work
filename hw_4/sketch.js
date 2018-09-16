@@ -25,19 +25,15 @@ push();
   //created new sandbox for mouth section of monster.
   push();
 
-      // Sandbox for lips
-      push();
-
-        // Gums or lips
-        // stroke('rgb(80, 35, 100)');
-        // strokeWeight(20);
+      // Sandbox for outer mouth
+      // push();
 
         // Outer mouth
         noStroke();
         fill('rgb(60, 35, 75)');
         ellipse( -100, 100, 300 );
 
-      pop();
+      // pop();
 
     //Mouth middle
     noStroke();
@@ -108,7 +104,7 @@ push();
 
     pop();
 
-//Outer Teeth
+    //Outer Teeth
 
       //Outer teeth sandbox
       push();
@@ -166,6 +162,74 @@ push();
 
         pop();
 
+
+  /****************************************************************************/
+  //Eyestalks
+  /****************************************************************************/
+
+  //Sandbox for eyestalks
+  push();
+
+    //Moved grid to top of mouth
+    translate( -100, -60 );
+
+    //Left eyestalk line and color
+    stroke('rgb( 100, 35, 120 )');
+    strokeWeight(30);
+    line( 0, 0, -125, -125 );
+
+      //Sandbox for right eyestalk
+      push();
+
+        //Reflecting left eyestalk across y axis
+        scale( -1, 1 );
+
+        //Right eye stalk line and color
+        stroke('rgb( 100, 35, 120 )');
+        strokeWeight(30);
+        line( 0, 0, -125, -125 );
+
+      pop();
+
+  pop();
+
+  /****************************************************************************/
+  //Eyes
+  /****************************************************************************/
+
+  //Sandbox for left eye
+  push();
+
+    //Centered grid at top of left eyestalk
+    translate( -230, -190 );
+
+    //Left eyeball shape and color
+    fill('rgba(58, 30, 103, 0.85)');
+    ellipse( 0, 0, 40 );
+
+    //Left pupil shape and color
+    fill('rgb(159, 195, 29)');
+    ellipse( 0, 0, 20, 40 );
+
+  pop();
+
+  //Sandbox for right eye
+  push();
+
+    //Centered grid at top of right eyestalk
+    translate( 30, -190 );
+
+    //Right eyeball shape and color
+    fill('rgba(58, 30, 103, 0.85)');
+    ellipse( 0, 0, 40 );
+
+    //Right pupil shape and color
+    fill('rgb(159, 195, 29)');
+    ellipse( 0, 0, 20, 40 );
+
+  pop();
+
+
   /****************************************************************************/
   //lips
   /****************************************************************************/
@@ -180,6 +244,10 @@ push();
     ellipse( -100, 100, 300 );
 
   pop();
+
+  /****************************************************************************/
+  //Body
+  /****************************************************************************/
 
 pop();
 
