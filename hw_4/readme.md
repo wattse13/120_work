@@ -21,4 +21,8 @@ This week I chose to sketch a self-portrait using p5.js shape, line, and color f
 
 I started with the mouth first as I had decided it would be the top-most layer. Using three seperate ellipses, and increasingly darker shades of purple, I was able to give the mouth some semblance of depth.
 
-The next body segment I worked on were the teeth. I broke the 'teeth problem' down into two seperate sub-problems as well: inner-teeth and outer-teeth. While the 'traingle();' function may have been easier to use, I felt like the 'arc();' function created much better teeth shapes. 
+The next body segment I worked on were the teeth. I broke the 'teeth problem' down into two seperate sub-problems as well: inner-teeth and outer-teeth. While the
+
+ 'traingle();'
+
+ function may have been easier to use, I felt like the 'arc();' function created much better teeth shapes.
