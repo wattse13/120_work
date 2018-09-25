@@ -2,7 +2,7 @@
 //Alien Invasion Project
 //My goal is to make an alien space ship appear to chase the mouse cursor.
 //Movement should be controlled by mouse movement.
-//Abduction beam should change in relation to Canvas height.
+//Abduction beam should change in relation to cursor position.
 //Lights should rotate independently of mouse.
 /******************************************************************************/
 
@@ -17,16 +17,16 @@ function setup(){
 //Global Variables
 /******************************************************************************/
 
-//Assigns values for red, blue, and green variables.
+//Assigns initial values to red, blue, and green variables.
 let red = 1;
 let blue = 1;
 let green = 1;
 
-//Assigns values for variables ship width and height
-let shipWidth = 350;
-let shipHeight = 125;
+//Assigns values to spaceWidth and spaceHeight variables.
+let spaceWidth = 1400;
+let spaceHeight = 700;
 
-//Assigns initial value for light angle.
+//Assigns initial value to light angle variable.
 let lightAngle = 0;
 
 // let easing = 0.0001;
@@ -43,14 +43,22 @@ function draw(){
   // targetY = mouseY;
   // x += ( targetX - x ) * easing;
 
+  //More Variables
+
   //Reassigns value to lightAngle variable.
-  lightAngle = lightAngle - 5
+  lightAngle = lightAngle - 5;
+
+  //Assigns values to shipWidth and shipHeight variables.
+  shipWidth = spaceWidth / 4;
+  shipHeight = spaceHeight / 5.6;
+
+  //Space Ship
 
   //Drawn objects follow cursor from 150 pixles above.
   translate( mouseX - 30, mouseY - 150 );
 
   //erases images after each frame
-  background( 255 );
+  background( 128 );
 
   //Abduction beam sandbox.
   push();
@@ -64,7 +72,7 @@ function draw(){
     //Shapes abduction beam.
     noStroke();
     fill( red, 0, blue, 100 );
-    quad( 0, 20, 60, 20, 120, 200, -60, 200);
+    quad( 0, 20, 60, 20, 120, 200, -60, 200 );
 
   pop();
 
