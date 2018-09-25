@@ -6,6 +6,13 @@
 //Lights should rotate independently of mouse.
 /******************************************************************************/
 
+//Lines 13, 14, 65, and 66 were taken from the 'Getting Started with p5.js' book.
+//They are supposed to cause the object following the mouse lag slightly behind it.
+//The speed at which the x variable reaches targetX is set by the easing variable.
+//I was unable to incorporate them succesfully into my sketch.
+// var x = 0;
+// var easing = 0.001;
+
 function setup(){
 
   //Creates canvas that is 1400 pixles by 700 pixles.
@@ -29,19 +36,13 @@ let spaceHeight = 700;
 //Assigns initial value to light angle variable.
 let lightAngle = 0;
 
-// let easing = 0.0001;
-// let x = 0;
-// let y = 0;
+
 
 /******************************************************************************/
 //Space Ship
 /******************************************************************************/
 
 function draw(){
-
-  // let targetX = mouseX;
-  // targetY = mouseY;
-  // x += ( targetX - x ) * easing;
 
   //More Variables
 
@@ -59,6 +60,10 @@ function draw(){
 
   //erases images after each frame
   background( 128 );
+
+  //See lines 9, 10, 11, and 12.
+  // var targetX = mouseX;
+  // x += ( targetX -x ) * easing;
 
   //Abduction beam sandbox.
   push();
@@ -86,7 +91,7 @@ function draw(){
     //Also adds outline to cockpit.
     stroke(5);
     fill( 147, 34, 141 );
-    ellipse( 0, 0, 350, 125);
+    ellipse( 0, 0, shipWidth, shipHeight );
 
   pop();
 
