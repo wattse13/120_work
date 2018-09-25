@@ -9,13 +9,13 @@
 //Lines 13, 14, 65, and 66 were taken from the 'Getting Started with p5.js' book.
 //They are supposed to cause the object following the mouse lag slightly behind it.
 //The speed at which the x variable reaches targetX is set by the easing variable.
-//I was unable to incorporate them succesfully into my sketch.
+//I was unable to incorporate them successfully into my sketch.
 // var x = 0;
 // var easing = 0.001;
 
 function setup(){
 
-  //Creates canvas that is 1400 pixles by 700 pixles.
+  //Creates canvas that is 1400 pixels by 700 pixels.
   createCanvas( 1400, 700 );
 
 }
@@ -53,10 +53,10 @@ function draw(){
 
   //Space Ship
 
-  //Drawn objects follow cursor from 150 pixles above.
+  //Drawn objects follow cursor from 150 pixels above.
   translate( mouseX - 30, mouseY - 150 );
 
-  //erases images after each frame
+  //Erases images after each frame
   background( 128 );
 
   //See lines 9, 10, 11, and 12.
@@ -66,7 +66,7 @@ function draw(){
   //Abduction beam sandbox.
   push();
 
-    //Re-assigns values for red and blue parametrs based on cursor location.
+    //Re-assigns values for red and blue parameters based on cursor location.
     red = mouseY * 0.27;
     blue = mouseX * 0.27;
 
