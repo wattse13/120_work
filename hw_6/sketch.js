@@ -9,9 +9,7 @@
 //Stores box variables as a js object.
 let box = {};
   box.width = 50;
-  box.maxW;
   box.height = 50;
-  box.maxH;
   box.stroke = 6;
   box.x = 0;
   box.y = 0;
@@ -60,11 +58,11 @@ function draw(){
   box.angle += 1;
 
   //Changes rectangle color value over time
-  //Floor function ensures randomly selected values chosen by random function are whole numbers
+  //Floor and Ceil functions ensures randomly selected values chosen by random function are whole numbers
   box.r = floor( random( 0, 255 ) );
-  box.b = floor( random( 0, 255 ) );
+  box.b = ceil( random( 0, 254 ) );
 
-  //Modolu operator prevents box.stroke from growing indefinately 
+  //Modolu operator prevents box.stroke from growing indefinately
   box.stroke = (box.stroke + 1) % 2;
 
   }

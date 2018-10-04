@@ -1,5 +1,7 @@
-# Empty p5 sketch.
+Eli Watts, 50
 
-Please replace contents of this file with appropriate readme information after finishing your p5 sketch.
+[Algorithmic Drawing]()
 
-Current p5 version -> 0.7.1
+# Homework Assignment 6
+
+## Intro
