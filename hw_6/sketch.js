@@ -8,8 +8,8 @@
 
 //Stores box variables as a js object.
 let box = {};
-  box.width = 50;
-  box.height = 50;
+  box.width = 700;
+  box.height = 700;
   box.stroke = 6;
   box.x = 0;
   box.y = 0;
