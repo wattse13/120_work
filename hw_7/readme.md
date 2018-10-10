@@ -13,7 +13,7 @@ This sketch uses `if(){}` statements and the boolean logic of the `mousePressed(
 
 ### Line by Line Breakdown
 
-The lines mentioned in the following paragraphs refer to the original code as downloaded from the course website. The line numbers may not be accurate after adding my own modifications to the original code. 
+The lines mentioned in the following paragraphs refer to the original code as downloaded from the course website. The line numbers may not be accurate after adding my own modifications to the original code.
 
 Line 3 initializes a new javascript object called ball. The following lines, 4 through 10, initialize variables realated to the ball object and assign their beginning values. Dot notation is used to group these variables as a part of the ball javascript object. Ball.width is assigned a value of 40; ball.x and ball.y are assigned values of 10; ball.delta_x, ball.detla_y, ball.scale_x, and ball.scale_y are all assigned values of 1. Because the ball javascript object and its variables are declared outside of both the `function setup(){}` and `function draw(){}` blocks, they are global variables which can be called from anywhere in the code.
 
@@ -34,7 +34,3 @@ The sketch's final function, the `function mousePressed(){}`, is written on line
 Lines 37 and 38 use the `map();` element to reassign a value to the varaibles ball.scale_x and ball.scale_y. The `map();` element, on line 37, takes the variable mouseX, and its old parameters of 0 and width, and converts them to values between 0.5 and 10. Line 38 does the same thing for the ball.scale_y variable with mouseY values. The new values for ball.scale_x and ball.scale_y are fed back into lines 21 and 22 where they ultimately change the values of ball.x and ball.y. Because the ball.x and ball.y variables are used as the ellipse's location values, clicking the mouse changes how the ellipse moves across the canvas.
 
 ## How did you alter the sketch?
-
-<!--
-Please describe how and why you changed the sketch?
--->
