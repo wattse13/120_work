@@ -34,3 +34,21 @@ The sketch's final function, the `function mousePressed(){}`, is written on line
 Lines 37 and 38 use the `map();` element to reassign a value to the varaibles ball.scale_x and ball.scale_y. The `map();` element, on line 37, takes the variable mouseX, and its old parameters of 0 and width, and converts them to values between 0.5 and 10. Line 38 does the same thing for the ball.scale_y variable with mouseY values. The new values for ball.scale_x and ball.scale_y are fed back into lines 21 and 22 where they ultimately change the values of ball.x and ball.y. Because the ball.x and ball.y variables are used as the ellipse's location values, clicking the mouse changes how the ellipse moves across the canvas.
 
 ## How did you alter the sketch?
+
+On lines 14 through 17 I added more variables to the ball javascript object. These variables were all related to color which would allow me to play with the fill values later in the sketch. On line 31 I assigned the element and variables `color( ball.color_r, ball.color_g, ball.color_b );` to be the values of the variable ball.color.
+
+On line 36, I created global variable called clickPoint and assigned it an intial value of 0.
+
+ With the `floor();` and `random();` elements I reassigned a random whole number as a value to the custom variables ball.color_r, _g, and _b on lines 47 through 49.
+
+ On line 54 I created a local variable, clickPoint, and assigned its value to be the distance between mouseX mouseY and ball.x ball.y locations.
+
+ I used `textSize();`, `textAlign();`, `stroke();`, `fill();`, `text();` elements and the custom variable `let str = "Points!" + clickPoint;` to size, align, outline, color, and draw text to the canvas. The custom variable `str` draws the word "Points!" and a numerical value which is the value of the custom variable clickPoint can be changed.
+
+ Lines 85 and 86 are similiar to lines 25 26, and 28 29 in the original code. If at anytime the code evaluates the line 85 and if any of the following are true -- the ball.x value is either greater than or equal to the width or less than or equal to 0 or if the ball.y value is greater than or equal to height or less than or equal to 0-- then the ball.color variable is reassinged a new value. This new value is the element `color();` and it uses the variables ball.color_r, _g, and _b as parameters. Because the parameters are assigned a random whole number between 0 and 255 then the ball.color variable stands in as a random color generator which changes the shapes color everytime the shape bounces off one of the canvas edges.
+
+ The `if(){}` statement on line 90 changes the shape color to white if the statement, rollDistance is less than ball.width, tests true. This means that everytime the cursor hovers over the moving shape, the shape turns white. If the statement tests false, then it returns to a random color as set by the ball.color variable.
+
+The `if(){}` and `else{}` statements on lines 100 and 108 change the shape drawn on the canvas. The `if(){}` tests the statement, if mouseX is greater than width divided by two and mouseY is greater than height divided by two, and if both halves test true, then the shape drawn is a square. If one, or both, sides of the statement evaluate to false, then an ellipse is drawn.
+
+Finally, the `if(){}` statement on line 118 tests the statement, if rollDistance is less than ball.width. If true, then the following line of code is executed. Line 119 is another `if(){}` statement which tests the statement, the mouse is clicked. If that line evaluates to true, then the clickPoint value increases. The new value is then drawn on the canvas because of line 70. I don't know how line 121 `return false;` works, but I was told to just do it, so I did. 
