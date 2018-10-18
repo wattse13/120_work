@@ -51,14 +51,13 @@ function draw(){
   //Calculates the distance between center of thomas and boulder
   let crushed = dist( boulder.x, boulder.y, thomas.x, thomas.y );
 
-  //Sets background color to grey
-  //Background is constantly updated which creates animated effect
-  background( 128 );
-
-
   /******************************************************************************/
   //Background
   /******************************************************************************/
+
+  //Sets background color to grey
+  //Background is constantly updated which creates animated effect
+  background( 128 );
 
     //Sets up for loop to draw multiple 'stalactites' across top of canvas
     //Initializes x as variable. If x is less than the value of windowWidth then 60 is added to the value of x
@@ -125,11 +124,7 @@ function draw(){
     boulder.y = 0;
   }
 
-  if ( crushed < 40 ) {
-    thomas.x = 1400;
-  }
-
-  if ( thomas.x < 0 ) {
+  if ( crushed < 40 || thomas.x < 0 ) {
     thomas.x = 1400;
   }
 
