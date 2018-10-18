@@ -1,3 +1,7 @@
+/******************************************************************************/
+//Javascript Objects
+/******************************************************************************/
+
 //Initializes new javascript object named thomas
 //Stores variables related to thomas
 let thomas = {};
@@ -30,6 +34,10 @@ function setup(){
 
 function draw(){
 
+  /****************************************************************************/
+  //Variables
+  /****************************************************************************/
+
   //Reassigns thomas.y variable to be half of canvas height
   thomas.y = height * 0.5;
 
@@ -43,22 +51,47 @@ function draw(){
   //Calculates the distance between center of thomas and boulder
   let crushed = dist( boulder.x, boulder.y, thomas.x, thomas.y );
 
-  // let point = 0;
-
   //Sets background color to grey
   //Background is constantly updated which creates animated effect
   background( 128 );
 
-  // push();
-  //
-  //   textSize( 36 );
-  //   textAlign( RIGHT );
-  //   stroke( 'white' );
-  //   fill( 'black' );
-  //   let str = "Points!" + point
-  //   text( str, width / 9, height / 6 );
-  //
-  // pop();
+
+  /******************************************************************************/
+  //Background
+  /******************************************************************************/
+
+    //Sets up for loop to draw multiple 'stalactites' across top of canvas
+    //Initializes x as variable. If x is less than the value of windowWidth then 60 is added to the value of x
+    for ( x = 0; x < windowWidth; x += 60 ){
+
+        //Fills and shapes stalactite shape
+        //Using x variable, as defined in for loop, causes shape to be drawn multiple times
+        fill(boulder.color);
+        triangle( x, 0,
+                  x + 30, 120,
+                  x + 60, 0 );
+    }
+
+    //Should similarily to stalactite for loop and create 'cracks' in background
+    //Only works for a split second before disappearing
+    //Tried modifying what I found on class leson with the `random();` element
+    //Initializes new variable i. If i is less than value of windowWidth the 100 is added to value of i
+    for( let i = 0; i < windowWidth; i += 100 ){
+
+        //Colors and shapes 'crack' lines
+        fill( boulder.color );
+        strokeWeight( 3 );
+
+        //X position 1 begins at value of i and y position 1 begins at 700
+        //X and y position 2 are given a random value between value of i and 100
+          //Process is repeated with line 2
+        line( i, 700, random( i, 100 ), random( i, 100) );
+        line( i, 350, random( i, 100 ), random( i, 100) );
+    }
+
+  /****************************************************************************/
+  //Game
+  /****************************************************************************/
 
   //Outlines, fills, places, and shapes rectangle
   //Use of custom variables in x and y parameters allows for movement across canvas
@@ -72,7 +105,8 @@ function draw(){
   }
 
   //For loop draws boulders across screen
-  //If i is less than 4 then 1 is added to the value of the variable //
+  //Taken from class lesson
+  //If i is less than 4 then 1 is added to the value of the variable
   //Sets fill to custom variable 'boulder.color'
   //Reassigns boulder.x value to be the result of the width multiplied by the result of variable i's value multiplied by 0.25
   //Draws ellipse using custom variables for placement and size
