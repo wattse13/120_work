@@ -6,13 +6,6 @@
 //Lights should rotate independently of mouse.
 /******************************************************************************/
 
-//Lines 13, 14, 65, and 66 were taken from the 'Getting Started with p5.js' book.
-//They are supposed to cause the object following the mouse lag slightly behind it.
-//The speed at which the x variable reaches targetX is set by the easing variable.
-//I was unable to incorporate them successfully into my sketch.
-// var x = 0;
-// var easing = 0.001;
-
 function setup(){
 
   //Creates canvas that is 1400 pixels by 700 pixels.
@@ -39,27 +32,37 @@ function draw(){
 
   //More Variables
 
-  //Reassigns value to lightAngle variable.
-  lightAngle = lightAngle - 5;
 
   //Assigns values to shipWidth and shipHeight variables.
   shipWidth = width / 4;
   shipHeight = height / 5.6;
 
-  //Space Ship
+  posX = mouseX;
+  posY = mouseY;
 
-  //Drawn objects follow cursor from 150 pixels above.
-  translate( mouseX - 30, mouseY - 150 );
+  //Space Ship
 
   //Erases images after each frame
   background( 128 );
 
-  //See lines 9, 10, 11, and 12.
-  // var targetX = mouseX;
-  // x += ( targetX -x ) * easing;
+spaceShip( posX - 30, posY - 150 );
 
-  //Abduction beam sandbox.
-  push();
+push();
+
+shipLight( posX - 125, posY - 175 );
+
+lightRotation( posX - 125, posY - 175 );
+
+pop();
+
+shipLight( posX, posY - 150 );
+shipLight( posX + 125, posY - 175 );
+
+}
+
+function spaceShip( x, y ) {
+
+  //Abduction beam
 
     //Re-assigns values for red and blue parameters based on cursor location.
     colorArr[0] = map( mouseY, 0, 700, 0, 255 );
@@ -70,23 +73,24 @@ function draw(){
     //Shapes abduction beam.
     noStroke();
     fill( colorArr[0], 0, colorArr[2], 100 );
-    quad( 0, 20, 60, 20, 120, 200, -60, 200 );
+    quad( x, y + 20, x + 60, y + 20, x + 120, y + 200, x - 60, y + 200 );
 
-  pop();
-
-  //Spaceship body sandbox.
-  push();
-
-    //Moves spaceship body above abduction beam.
-    translate( 30, -40 );
+  //Spaceship body
 
     //Removes outline, colors, and shapes spaceship body.
     //Also adds outline to cockpit.
     stroke(5);
     fill( 147, 34, 141 );
-    ellipse( 0, 0, shipWidth, shipHeight );
+    ellipse( x + 30, y - 40, shipWidth, shipHeight );
 
-  pop();
+  //Spaceship cockpit
+
+  //Spaceship cockpit color and shape.
+  fill('rgba( 50, 185, 45, 0.9 )');
+  arc( x + 30, y - 50, shipWidth * 0.6, shipHeight + 20, PI, 0, OPEN );
+}
+
+function shipLight( x, y ){
 
   //Spaceship lights sandbox.
   push();
@@ -100,52 +104,22 @@ function draw(){
     //Colors all rectangles in this sandbox.
     fill('rgb( 255, 203, 0 )');
 
-    //Left light sandbox.
-    push();
-
-      //Moves grid center to center of left light.
-      translate( shipWidth * -0.25, shipHeight * -0.25 );
-
-      //Rotates light on its center.
-      rotate( radians( lightAngle ) );
-
-      //Shapes and positions left square light.
-      rect( 0, 0, 20, 20, 5 );
-
-    pop();
-
-    //Middle light sandbox.
-    push();
-
-      //Moves grid to center of middle light.
-      translate( shipWidth * 0 + 30, shipHeight - 135 );
-
-      //Rotates middle light around its center.
-      rotate( radians( lightAngle ) );
-
-      //Shapes and positions middle square light.
-      rect( 0, 0, 20, 20, 5 );
-
-    pop();
-
-    //Right light sandbox.
-    push();
-
-      //Moves grid to center of right light.
-      translate( shipWidth * 0.25 + 60, shipHeight * -0.25 );
-
-      //Rotates right light around its center.
-      rotate( radians( lightAngle ) );
-
-    //Shapes and positions right square light.
-    rect( 0, 0, 20, 20, 5 );
-
-    pop();
+    //Shapes and positions left square light.
+    rect( x, y, 20, 20, 5 );
 
   pop();
+}
 
-  //Spaceship cockpit color and shape.
-  fill('rgba( 50, 185, 45, 0.9 )');
-  arc( 30, -50, shipWidth * 0.6, shipHeight + 20, PI, 0, OPEN );
+function lightRotation( x, y ) {
 
+  push();
+
+  translate( x, y );
+
+  rotate( radians( lightAngle ) );
+
+  //Reassigns value to lightAngle variable.
+  lightAngle = lightAngle - 5;
+
+  pop();
 }
