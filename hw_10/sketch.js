@@ -26,7 +26,7 @@ let colorArr = [
   { red: 0, green: 0, blue: 0 }
 ];
 
-//Assigns initial value to light angle variable.
+//Assigns initial value to light angle variable
 let lightAngle = 0;
 
 /******************************************************************************/
@@ -62,7 +62,7 @@ function draw(){
     shipLight( posX, posY - 150 );
     shipLight( posX + 125, posY - 175 );
 
-    //Reassigns value to lightAngle variable.
+    //Reassigns value to lightAngle variable
     lightAngle = lightAngle - 5;
 }
 
