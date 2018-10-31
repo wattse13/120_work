@@ -17,6 +17,11 @@ function setup(){
 //Global Variables
 /******************************************************************************/
 
+//Creates new array
+//Array is filled with three objects
+//Array element 0 is variable 'red' and has an initial value of 0
+//Array element 1 is variable 'green' and has an initial value of 0
+//array element 2 is variable 'blue' and ahs an initial value of 0
 let colorArr = [
   { red: 0, green: 0, blue: 0 }
 ];
@@ -30,96 +35,103 @@ let lightAngle = 0;
 
 function draw(){
 
-  //More Variables
-
+  /****************************************************************************/
+  //Local variables
+  /****************************************************************************/
 
   //Assigns values to shipWidth and shipHeight variables.
   shipWidth = width / 4;
   shipHeight = height / 5.6;
 
+  //Initiates variables posX and posY and assigns them values of mouseX and mouseY location
   posX = mouseX;
   posY = mouseY;
 
   //Space Ship
 
-  //Erases images after each frame
-  background( 128 );
+    //Erases images after each frame
+    background( 128 );
 
-spaceShip( posX - 30, posY - 150 );
+    //Draws spaceShip function at posX - 30 and posY - 150 location
+    //Because posX and posY are custom variables that change with mouse movement, the spaceShip's location also changes
+    spaceShip( posX - 30, posY - 150 );
 
-push();
+    //Draws thre shipLights
+    //Because posX and posY are custom variables that change with mouse movements, the shipLight's location also changes
+    shipLight( posX - 125, posY - 175 );
+    shipLight( posX, posY - 150 );
+    shipLight( posX + 125, posY - 175 );
 
-shipLight( posX - 125, posY - 175 );
-
-lightRotation( posX - 125, posY - 175 );
-
-pop();
-
-shipLight( posX, posY - 150 );
-shipLight( posX + 125, posY - 175 );
-
+    //Reassigns value to lightAngle variable.
+    lightAngle = lightAngle - 5;
 }
 
+/******************************************************************************/
+//Functions
+/******************************************************************************/
+
+//Creates new function called 'spaceShip'
+//Requires two location parameters x and y
 function spaceShip( x, y ) {
 
   //Abduction beam
 
-    //Re-assigns values for red and blue parameters based on cursor location.
+    //Re-assigns values for red and blue parameters based on cursor location
+    //Maps range of 0 to 700 and 0 to 1400 with new range of 0 to 255
+      //Creates color gradiant that reaches across entire canvas
     colorArr[0] = map( mouseY, 0, 700, 0, 255 );
     colorArr[2] = map( mouseX, 0, 1400, 0, 255 );
 
-    //Removes abduction beam outline.
-    //Changes abduction beam color based on cursor location.
-    //Shapes abduction beam.
+    //Removes abduction beam outline
+    //Changes abduction beam color based on cursor location
+    //Shapes abduction beam
+    //Positions abduction beam with the x and y parameters which will be defined with arguments once the function is called in draw(){}
     noStroke();
     fill( colorArr[0], 0, colorArr[2], 100 );
     quad( x, y + 20, x + 60, y + 20, x + 120, y + 200, x - 60, y + 200 );
 
   //Spaceship body
 
-    //Removes outline, colors, and shapes spaceship body.
-    //Also adds outline to cockpit.
+    //Removes outline, colors, and shapes spaceship body
+    //Also adds outline to cockpit
+    //Positions ellipse with the x and y parameters which will be defined with arguments once the function is called in 'draw(){}'
     stroke(5);
     fill( 147, 34, 141 );
     ellipse( x + 30, y - 40, shipWidth, shipHeight );
 
   //Spaceship cockpit
 
-  //Spaceship cockpit color and shape.
+  //Spaceship cockpit color and shape
+  //Positions arc with the x and y parameters which will be defined with arguments once the functions is called in draw(){}
   fill('rgba( 50, 185, 45, 0.9 )');
   arc( x + 30, y - 50, shipWidth * 0.6, shipHeight + 20, PI, 0, OPEN );
 }
 
+//Creates new function called 'shipLight'
+//Requires two location parameters x and y
 function shipLight( x, y ){
 
-  //Spaceship lights sandbox.
+  //Spaceship lights sandbox
+  //Prevents translate function from interfering with position of other shipLights if function is called more than once
   push();
 
-    //Sets no outline for all rectangles and ellipses in this sandbox.
+    //Sets no outline for all rectangles and ellipses in this sandbox
     noStroke();
 
-    //First two parameters now define coordinates for rectangle center.
+    //First two parameters now define coordinates for rectangle center
     rectMode( CENTER );
 
-    //Colors all rectangles in this sandbox.
+    //Colors all rectangles in this sandbox
     fill('rgb( 255, 203, 0 )');
 
-    //Shapes and positions left square light.
-    rect( x, y, 20, 20, 5 );
+    //Moves grid center to x and y location
+    translate( x, y );
 
-  pop();
-}
+    //Rotates shipLight around center point of new grid position
+    rotate( radians( lightAngle ) );
 
-function lightRotation( x, y ) {
-
-  push();
-
-  translate( x, y );
-
-  rotate( radians( lightAngle ) );
-
-  //Reassigns value to lightAngle variable.
-  lightAngle = lightAngle - 5;
+    //Shapes and positions lights
+    rect( 0, 0, 20, 20, 5 );
 
   pop();
 }
