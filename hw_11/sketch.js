@@ -1,19 +1,28 @@
-let rain;
+let rainy = [];
 
 function setup(){
 
   createCanvas( 600, 720 );
-  rain = new Rain( random( 0, 600), random( 0, 40 ) );
 
+  for( let i = 0; i < 100; i++ ){
+    let beginX = random( 0, 600 );
+    let beginY = random( -700, 0 );
+    rainy[i] = new Rain( beginX, beginY );
+  }
 }
 
 function draw(){
 
-background( 'black' );
+  background( 'black' );
 
-    rain.show();
-    rain.fall();
+  for( i = 0; i < rainy.length; i++ ){
+    rainy[i].show();
+    rainy[i].pour();
+    rainy[i].repeat();
+    rainy[i].bounce();
+  }
 }
+
 
 /******************************************************************************/
 //Classes
@@ -26,27 +35,29 @@ class Rain{
     this.y = startY;
   }
 
-  fall(){
-
-    this.x -= 0.5;
-    this.y += 2;
-
+  pour(){
+    this.x -= 0.1;
+    this.y += random( 1, 3 );
   }
 
-  // bounce(){
-  //
-  //   if (this.y > 600) {
-  //
-  //   }
-  //
-  // }
+  repeat(){
+     if( this.y > height ){
+      this.y = random( -100, 0 );
+      this.x = random( 0, 600 );
+    }
+ }
+
+  bounce(){
+    if( this.y > height ){
+      fill('white');
+      ellipse( this.x, height, 10 );
+    }
+  }
 
   show(){
-
     stroke('white');
     strokeWeight( 2 );
-    line( this.x, this.y, this.x - 15, this.y + 50 );
-
+    line( this.x, this.y, this.x - 10, this.y + 50 );
   }
 
 }
