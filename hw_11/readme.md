@@ -38,8 +38,8 @@ On top of the previous issue, I was also unable to get my bounce method to work 
 
 ## Github
 
-While I wasn't able to help anyone with their coding project, yet, I did post my bounce method problem. I don't think it will be resolved before I turn this project in, but I am curious to see what kinds of solutions my classmates come up with. Also, MorganLong26 started a forum issue called this. In his post he described what was essentially the same problem I was having when trying to set up an array of objects. DVSnell was able to help him. I wanted to post to say that I was having the same problem, and that DVSnell's solution for MorganLong26 also worked for me, but the post was closed before I got the chance.
+While I wasn't able to help anyone with their coding project, yet, I did post my bounce method problem. I don't think it will be resolved before I turn this project in, but I am curious to see what kinds of solutions my classmates come up with. Also, MorganLong26 started a forum issue called this. In their post they described what was essentially the same problem I was having when trying to set up an array of objects. DVSnell was able to help them. I wanted to post to say that I was having the same problem, and that DVSnell's solution for MorganLong26 also worked for me, but the post was closed before I got the chance.
 
 ## Closing Thoughts
 
-While I feel like I understand classes well enough to create very simple sketches, like falling lines, I am slightly worried that I don't understand them well enough to do anything even a little more complicated. It would have been nice to get my bounce method to work before the homework deadline, but hopefully I will have a better grasp on classes by the time the final project rolls around. 
+While I feel like I understand classes well enough to create very simple sketches, like falling lines, I am slightly worried that I don't understand them well enough to do anything even a little more complicated. It would have been nice to get my bounce method to work before the homework deadline, but hopefully I will have a better grasp on classes by the time the final project rolls around.
