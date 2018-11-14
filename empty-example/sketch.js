@@ -54,10 +54,11 @@ class Amoeba{
 
   devour(hunted){
     for( i = 0; i < prey[i].length; i++){
-      // this.devoured = FALSE;
+      this.devoured = TRUE;
       let d = dist( this.x, this.y, hunted.x, hunted.y )
         if(d < this.r + hunted.r ){
           background('black');
+          return TRUE;
         }
            // return ( d < this.r + hunted.r );
         }
