@@ -17,12 +17,16 @@ function draw(){
   amoeba.creep();
   amoeba.generate();
   amoeba.starve();
-  amoeba.devour(prey[i]);
+  // amoeba.devour(prey[i]);
 
   for( i = 0; i < prey.length; i++ ){
     prey[i].flee();
     prey[i].populate();
     prey[i].edgeBounce();
+    if(amoeba.devour(prey[i]) == TRUE){
+      background('black');
+      startR += 10;
+    }
   }
 
 }
@@ -53,15 +57,15 @@ class Amoeba{
   }
 
   devour(hunted){
-    for( i = 0; i < prey[i].length; i++){
+    // for( i = 0; i < prey[i].length; i++){
       this.devoured = TRUE;
       let d = dist( this.x, this.y, hunted.x, hunted.y )
         if(d < this.r + hunted.r ){
-          background('black');
+          // background('black');
           return TRUE;
         }
            // return ( d < this.r + hunted.r );
-        }
+        // }
       }
 
   starve(){
