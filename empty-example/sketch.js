@@ -1,5 +1,6 @@
 let amoeba;
 let prey = [];
+let startR = 50;
 
 function setup(){
   createCanvas( windowWidth, windowHeight );
@@ -7,7 +8,7 @@ function setup(){
     prey[i] = new Hunted( random( 0, width ), random( 0, height ), random( 10, 30 ) );
   }
 
-  amoeba = new Amoeba( width / 2, height / 2, 50 );
+  amoeba = new Amoeba( width / 2, height / 2, startR );
 
 }
 
@@ -16,7 +17,7 @@ function draw(){
   amoeba.creep();
   amoeba.generate();
   amoeba.starve();
-  amoeba.devour();
+  amoeba.devour(prey[i]);
 
   for( i = 0; i < prey.length; i++ ){
     prey[i].flee();
@@ -52,10 +53,13 @@ class Amoeba{
   }
 
   devour(hunted){
-    for( i = 0; i < hunted[i].length; i++){
-      this.devoured = FALSE;
+    for( i = 0; i < prey[i].length; i++){
+      // this.devoured = FALSE;
       let d = dist( this.x, this.y, hunted.x, hunted.y )
-           return ( d < this.r + hunted.r );
+        if(d < this.r + hunted.r ){
+          background('black');
+        }
+           // return ( d < this.r + hunted.r );
         }
       }
 
