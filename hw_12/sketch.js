@@ -31,7 +31,7 @@ function draw(){
   //Creep, generate, and starve functions from Amoeba class are applied to amoeba object
   amoeba.creep();
   amoeba.generate();
-  amoeba.starve();
+  // amoeba.starve();
 
   //Took this line of code from a coding train video narrated by Daniel Shiffman
   //Applies class function to every iteration of every object element in the prey array
@@ -45,7 +45,7 @@ function draw(){
       if( amoeba.devour( p ) == false ){
         amoeba.starve();
         //Otherwise amoeba.grow function is applied
-      }else{
+      }else if( amoeba.devour( p ) == true ){
         amoeba.grow();
       }
   }
@@ -65,14 +65,19 @@ function draw(){
 class Amoeba{
   //Requires three parameters are filled with arguments when called
   constructor( x, y, r ){
+    //This instance of x, y, and r are give the variables x, y, and r
     this.x = x;
     this.y = y;
     this.r = r;
+    //This instance of runX and runY are give random values between 1 and 3
     this.runX = random( 1, 3 );
     this.runY = random( 1, 3 );
   }
+  //New method called creep
   creep(){
+    //Creates new variable and gives it a value of 5
     let crawl = 5;
+    //If statement keyIsDown evaluates to true, the value this.x or this.y are changed by the value of + or - crawl
     if( keyIsDown( RIGHT_ARROW ) ){
       this.x += crawl;
     }else if( keyIsDown( LEFT_ARROW ) ){
@@ -83,46 +88,67 @@ class Amoeba{
       this.y += crawl;
     }
   }
-
+  //Creates new method called devour which requires one input parameter
   devour(other){
+    //creates new variable and gives it the value of the distance between points located at this.x this.y and other.x other.y
+    //Taken from Shiffman video
     let d = dist( this.x, this.y, other.x, other.y )
+      //if value of variable 'd' is less than sum of this.r and other.r the statement evaluates as true
       return ( d < this.r + other.r );
     }
 
+  //Creates new method
   grow(){
+    //Modifies variable r by adding 10 to its current value
     this.r += 10;
   }
 
+  //Creates new method
   starve(){
+    //Creates new variable 'hunger' and asssigns it a value of .1
     let hunger = .1;
+    //Updates 'r' by value of hunger variable
     this.r -= hunger;
+    //If the value of 'r' is less than or equal to 0, this.x, this.y, and this.r are reset to middle of canvas
     if( this.r <= 0 ){
       this.x = width / 2;
       this.y = height / 2;
       this.r = 50;
     }
   }
+
+  //Creates new method
   generate(){
+    //Creates new ellipse at this.x, this.y, and this.r location with a fill color of purple
     ellipseMode(CENTER);
     noStroke();
     fill( 'purple' );
     ellipse( this.x, this.y, this.r );
   }
 
+  //Creates new method
   flee(){
+    //Updates this.x and this.y locations with the value of the variables 'runX' and 'runY'
     this.x += this.runX;
     this.y += this.runY;
   }
 
+  //Creates new method
   edgeBounce(){
+    //If statement checks if value of 'x' variable extends beyond canvas
+      //If true, direction is reversed by multiplying variable runX by -1
     if( this.x >= width || this.x <= 0 ){
       this.runX = this.runX * - 1;
     }
+    //Works the same as above if statement but checks and changes the value of the 'y' variable
     if( this.y >= height || this.y <= 0 ){
       this.runY = this.runY * -1;
     }
   }
+
+  //Creates new method
   populate(){
+    //Creates new ellipse at x, y, and r locations with a yellow color
     ellipseMode(CENTER);
     noStroke();
     fill( 'yellow' );
