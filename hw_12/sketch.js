@@ -17,7 +17,7 @@ function setup(){
   //Stores objects based on Amoeba class as elements in prey array
   //If the value of i is less than _, a new object is added to the prey array
     //Repreated until the value of 'i' is no longer less than _
-  for( i = 0; i < 1; i++ ){
+  for( i = 0; i < 10; i++ ){
     //Prey ojbects are given random starting locations and a radius of 20
     prey[i] = new Amoeba( random( 0, width ), random( 0, height ), 20 );
   }
@@ -106,7 +106,7 @@ class Amoeba{
   //Creates new method
   starve(){
     //Creates new variable 'hunger' and asssigns it a value of .1
-    let hunger = .1;
+    let hunger = .01;
     //Updates 'r' by value of hunger variable
     this.r -= hunger;
     //If the value of 'r' is less than or equal to 0, this.x, this.y, and this.r are reset to middle of canvas
