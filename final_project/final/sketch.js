@@ -30,18 +30,19 @@ function draw(){
     cows[i].walk();
     cows[i].populate();
     cows[i].electricFence();
-    for( var j = 0; j < cows.lenght; j++ ){
-      if( i != j && cows[i].avoid(cows[j]))
-      cows[i].turn();
-      cows[j].turn();
-    }
+    cows[i].avoid( cows, i );
+    // for( var j = 0; j < cows.lenght; j++ ){
+    //   if( i != j && cows[i].avoid(cows[j]))
+    //   cows[i].turn();
+    //   cows[j].turn();
+    // }
   }
 
-push();
-  guy.patrol();
-  guy.display();
+// push();
+//   guy.patrol();
+//   guy.display();
   // setTimeout( guy.turn(), 1000 );
-pop();
+// pop();
 
   spaceShip.fly();
   spaceShip.abductionBeam();
@@ -99,10 +100,11 @@ class Ufo{
 
 class Animal{
 
-  constructor( x, y, r ){
+  constructor( x, y, size ){
     this.x = x;
     this.y = y;
-    this.r = r;
+    this.size = 40;
+    this.r = this.size / 2;
 
     this.deltaX = 1;
     this.deltaY = 1;
@@ -131,12 +133,16 @@ class Animal{
     }
   }
 
-avoid( other ){
-  let d = dist(this.x, this.y, other.x, other.y );
-  if( d < this.r + other. r){
-    return true;
-  }else{
-    return false;
+avoid( otherCows, self ){
+  for( let n = 0; n < otherCows.length; n++){
+    if( n != self ){
+      let d = dist(this.x, this.y, otherCows[n].x, otherCows[n].y );
+        let combinedR = this.r + otherCows[n].r;
+          if ( d <= combinedR ) {
+            this.deltaX *= -1;
+            this.deltaY *= -1;
+      }
+    }
   }
 }
 
