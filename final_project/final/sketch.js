@@ -45,23 +45,23 @@ function draw(){
   quad( 100, 100, 600, 100, 600, 600, 100, 600 )
 
   //Calls class methods for each element in the cows array
-  for( var i = 0; i < cows.length; i++ ){
-    cows[i].walk();
-    cows[i].populate();
-    cows[i].electricFence();
-    cows[i].avoid( cows, i );
-  }
+  // for( var i = 0; i < cows.length; i++ ){
+  //   cows[i].walk();
+  //   cows[i].populate();
+  //   cows[i].electricFence();
+  //   cows[i].avoid( cows, i );
+  // }
 
-// push();
-//   guy.patrol();
-//   guy.display();
-  // setTimeout( guy.turn(), 1000 );
-// pop();
+push();
+  guy.patrol();
+  guy.display();
+  setTimeout( guy.turn(), 1000 );
+pop();
 
   //Calls Ufo methods
-  spaceShip.fly();
-  spaceShip.abductionBeam();
-  spaceShip.invade();
+  // spaceShip.fly();
+  // spaceShip.abductionBeam();
+  // spaceShip.invade();
   // spaceShip.dangerZone( cows [i], i )
 }
 
@@ -156,43 +156,58 @@ class Ufo{
 //Instantiates new class
 class Animal{
 
+  //Class requires three arguments to fulfill its three parameters when first called
   constructor( x, y, size ){
+    //This.x, this.y, this.size, and this.r are all assigned to variables
     this.x = x;
     this.y = y;
     this.size = 40;
     this.r = this.size / 2;
 
+    //Movement variables and values
     this.deltaX = 1;
     this.deltaY = 1;
   }
 
+  //Creates new class method
   walk(){
+    //Modifies this.x and this.y locations with value of this.deltaX and this.deltaY values
     this.x += this.deltaX;
     this.y += this.deltaY;
   }
 
-  turn(){
-    this.deltaX = this.deltaX * -1;
-    this.deltaY = this.deltay * -1;
-  }
-
+  //Creates new class method
   electricFence(){
+
+    //Creates new variable and assigns it a value of -1
     let shock = -1;
 
+    //Sets up boundaries
+    //If a cow element's this.x location is greater than or less than a certain amount their movement is reversed
     if( this.x <= 100 || this.x >= 600 ){
       this.deltaX = this.deltaX * shock;
     }
+    //Reverses this.deltaY direction same way as lines above reverse this.deltaX direction
     if( this.y <= 100 || this.y >= 600 ){
       this.deltaY = this.deltaY * shock;
     }
   }
 
+//Creates new class method
+//Requires two arguments to fill its two parameters
+  //Taken from Week 12 Bouncing Balls example on class webpage
 avoid( otherCows, self ){
+  //Checks through all elements of array
   for( let i = 0; i < otherCows.length; i++){
+    //If element being checked is not itself, the program moves on to the next if loop
     if( i != self ){
+      //creates new variable and assigns it the value of the distance between this.x this.y and otherCows[i].x otherCows[i].y
       let d = dist(this.x, this.y, otherCows[i].x, otherCows[i].y );
+        //Creates new variable and assigns it the value of the sum of this. r plus otherCows[i].r
         let meet = this.r + otherCows[i].r;
+          //If the value of variable 'd' is less than or equal to the value of variable 'meet' the if statment evaluates true
           if ( d <= meet ) {
+            //Reverses object's direction causing objects to bounce off of each other
             this.deltaX *= -1;
             this.deltaY *= -1;
       }
@@ -200,11 +215,14 @@ avoid( otherCows, self ){
   }
 }
 
+//Creates new class method
 getGot(){
 
 }
 
+//Creates new class method
 populate(){
+  //Creates new ellipse at this.x, this.y, and this.r location with a fill color of white
   ellipseMode(CENTER);
   noStroke();
   fill( 'white' );
@@ -212,23 +230,33 @@ populate(){
   }
 }
 
+//Instantiates new class
 class Farmer{
+
+  //Class requires its three parameters are filled with three arguments when first called
   constructor( x, y, r ){
+    //Assigns this.x, this.y, and this.r new variables
     this.x = x;
     this.y = y;
     this.r = r;
-    this.vis = this.vis;
 
+    this.vis = this.vis;
+    //Movement variables and values
     this.deltaX = 2;
     this.deltaY = 2;
   }
 
+  //Creates new class method
   patrol(){
+
+    //Creates new variable and assigns it a value of -1
     let fence = -1;
 
+    //Modifies position of this.x and this.y causing object to move
     this.x += this.deltaX;
     this.y += this.deltaY;
 
+    //Lines 260 through 265 work the same way as lines 187 trough 193
     if( this.x <= 100 || this.x >= 600 ){
       this.deltaX = this.deltaX * fence;
     }
@@ -237,6 +265,7 @@ class Farmer{
     }
   }
 
+  //Creates new class method
   turn(){
 
     if( ( this.x <= 100 || this.x >= 600 ) || ( this.y <= 100 || this.y >= 600 ) ){
@@ -245,10 +274,12 @@ class Farmer{
     }
   }
 
+  //Creates new class method
   display(){
+    ////Creates new ellipse at this.x, this.y, and this.r location with a fill color of blue
     ellipseMode(CENTER);
     noStroke();
-    fill( 'red' );
+    fill( 'blue' );
     ellipse( this.x, this.y, this.r );
 
     this.vis = triangle( this.x, this.y, this.x + 50, this.y + 100, this.x - 50, this.y + 100 );
