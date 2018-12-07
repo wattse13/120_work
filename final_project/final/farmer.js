@@ -8,6 +8,8 @@ class Farmer{
     this.y = y;
     this.r = r;
 
+    this.visX = this.x + 100;
+    this.visY = this.y + 20;
     this.visR = 200;
     //Movement variables and values
     this.deltaX = 2;
@@ -34,6 +36,24 @@ class Farmer{
   }
 
   //Creates new class method
+  sawSomething( themAliens ){
+    // let themAliens;
+
+    if( mouseIsPressed ){
+      // for( let i = 0; i < themAliens.length; i++){
+        // let currentAlien = themAliens[i];
+        let damnedAliens = dist( this.x, this.y, this.themAliensX, this.themAliensY );
+          // console.log( damnedAliens );
+        let gotcha = this.r + this.themAliensR;
+          // console.log( gotcha );
+        if( damnedAliens < gotcha ){
+          themAliens.runAway();
+        // }
+      }
+    }
+  }
+
+  //Creates new class method
   heardSomething(){
     rotate( radians( random( 0, 360 ) ) );
   }
@@ -46,6 +66,6 @@ class Farmer{
     fill( 'blue' );
     ellipse( this.x, this.y, this.r );
 
-    ellipse(this.x + 100, this.y + 20, this.visR );
+    // ellipse(this.visX, this.visY, this.visR );
   }
 }

@@ -29,7 +29,7 @@ function setup(){
 
   //Global variable spaceShip is reassigned to call new objects based on Ufo class
   //Object created from Ufo class is given a starting location and size
-  spaceShip = new Ufo( 0, 0, 25 );
+  spaceShip = new Ufo( 50, 50, 25 );
 
 }
 
@@ -56,6 +56,7 @@ function draw(){
 push();
   guy.patrol();
   guy.display();
+  guy.sawSomething( spaceShip );
   // setTimeout( guy.heardSomething, 1000 );
 pop();
 
@@ -63,5 +64,6 @@ pop();
   spaceShip.fly();
   spaceShip.abductionBeam();
   spaceShip.invade();
-  spaceShip.dangerZone(cows)
+  spaceShip.dangerZone( cows );
+  spaceShip.runAway();
 }

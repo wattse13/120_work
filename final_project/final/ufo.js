@@ -15,6 +15,8 @@ class Ufo{
     //This instance of deltaX and deltaY are assigned values of 3
     this.deltaX = 3;
     this.deltaY = 3;
+
+    this.flyOff = false;
   }
 
   //Creates new class method
@@ -67,18 +69,25 @@ class Ufo{
         if( danger < bullsEye){
           //If the if statment evaluates as true the reactToDanger method is called
           currentCow.reactToDanger();
-
       }
     }
   }
 }
 
   //Creates new class method
+  runAway(){
+    console.log("Bye");
+    this.flyOff = true;
+  }
+
+  //Creates new class method
   invade(){
-    //Creates new ellipse at this.x, this.y, and this.r location with a fill color of purple
-    ellipseMode(CENTER);
-    noStroke();
-    fill( 'purple' );
-    ellipse( this.x, this.y, this.r );
+    //
+    if( !this.flyOff );
+      //Creates new ellipse at this.x, this.y, and this.r location with a fill color of purple
+      ellipseMode(CENTER);
+      noStroke();
+      fill( 'purple' );
+      ellipse( this.x, this.y, this.r );
   }
 }

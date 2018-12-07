@@ -25,7 +25,7 @@ class Animal{
   }
   reactToDanger(){
     //Check to make sure interaction is working
-      //console.log("mooh!");
+      //console.log( "mooh!" );
     //Changes this.disappeared value from false to true
     this.disappeared = true;
   }
@@ -46,7 +46,7 @@ class Animal{
     }
     //Lines 199 through 210 fix bug where cows would occaisionally get stuck outside of perimeter
     //If this.x or this.y are outside of perimeter they are redrawn inside
-    if( this.x > 600){
+    if( this.x > 600 ){
       this.x = 599;
     }
     if( this.x < 100 ){
@@ -68,26 +68,26 @@ avoid( otherCows, self ){
   let effectsX = [];
   let effectsY = [];
   //Checks through all elements of array
-  for( let i = 0; i < otherCows.length; i++){
+  for( let i = 0; i < otherCows.length; i++ ){
     //If element being checked is not itself, the program moves on to the next if loop
     if( i != self ){
       //creates new variable and assigns it the value of the distance between this.x this.y and otherCows[i].x otherCows[i].y
-      let d = dist(this.x, this.y, otherCows[i].x, otherCows[i].y );
+      let d = dist( this.x, this.y, otherCows[i].x, otherCows[i].y );
         //Creates new variable and assigns it the value of the sum of this. r plus otherCows[i].r
         let meet = this.r + otherCows[i].r;
           //If the value of variable 'd' is less than or equal to the value of variable 'meet' the if statment evaluates true
           if ( d <= meet ) {
             //Adds value of this.x - otherCows[i].x to effectsX array
-            effectsX.push( this.x - otherCows[i].x);
+            effectsX.push( this.x - otherCows[i].x );
             //Adds value of this.y - otherCows[i].y to effectsY array
-            effectsY.push( this.y - otherCows[i].y);
+            effectsY.push( this.y - otherCows[i].y );
       }
     }
     //Creates new variables and assigns initial values of 0
     let addedEffectsX =0.0;
     let addedEffectsY =0.0;
     //Modifies values of addedEffectsX and addedEffectsY for all elements in effectsX and effectsY arrays
-    for (let i = 0; i < effectsX.length; i++) {
+    for ( let i = 0; i < effectsX.length; i++ ) {
       //Values of addedEffectX and array element i in effectsX array are added together
       addedEffectsX += effectsX[i];
       //Values of addedEffectY and array element in in effectsY array are added together
@@ -98,7 +98,7 @@ avoid( otherCows, self ){
     //Creates new variable and assigns initial value of the product of added EffectsY divided by length of effectsY array
     let meanEffectY = addedEffectsY / effectsY.length
     //If mouseIsPressed evaluates to true lines 255 through 262 are run
-    if (mouseIsPressed) {
+    if ( mouseIsPressed ) {
       //Check to see if meanEffectX is being calculated or not
         //console.log(meanEffectX);
     }
@@ -107,7 +107,7 @@ avoid( otherCows, self ){
     meanEffectY *= 0.01;
     //If loop prevents lines 250 and 252 from dividing by zero which crashes the program
     //Only runs if length of effectsX array is larger than 0
-    if (effectsX.length > 0) {
+    if ( effectsX.length > 0 ) {
       //Modifies this.deltaX and this.deltaY by adding value of variables meanEffectX and meanEffectY to this.deltaX and this.deltaY
       this.deltaX += meanEffectX;
       this.deltaY += meanEffectY;
@@ -133,9 +133,9 @@ calmDown(){
 //Creates new class method
   populate(){
     //If this.disappeared does not equal, false, then the program runs lines 293 through 296
-    if(!this.disappeared){
+    if( !this.disappeared ){
       //Creates new ellipse at this.x, this.y, and this.r location with a fill color of white
-      ellipseMode(CENTER);
+      ellipseMode( CENTER );
       noStroke();
       fill( 'white' );
       ellipse( this.x, this.y, this.r );
