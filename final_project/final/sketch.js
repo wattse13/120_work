@@ -119,23 +119,25 @@ class Ufo{
     }
   }
 
-  //Creates new class method which needs two arguments to fill its two parameters
-    //Currently not working
-    //Supposed to use nested if statements to check if the mouse is clicked while two objects intersect
+  //Creates new class method which needs one arguments to fill its parameter
   dangerZone( themCows ){
+    //If mouseIsPressed evaluates to true the programs runs lines 127 through 133
     if( mouseIsPressed){
       //Checks all elements stored in themCows array
       for( let i = 0; i < themCows.length; i++){
+        //Creates new variable and assigns it the themCows array as a value
         let currentCow = themCows[i];
         //Creates new variable and assigns it the distance between this.x this.y and themCows[i].x themCows[i].y
-        let danger = dist( this.x, this.y, currentCow.x, currentCow.y )
-        //console.log(danger);
+        let danger = dist( this.x, this.y, currentCow.x, currentCow.y );
+        //Check to see if interaction is working
+          //console.log(danger);
         //Creates new varaible and assigns it the value of the sum of abductionSize.r + themCows[i].r
         let bullsEye = this.abductionSize + currentCow.r;
-        //console.log(bullsEye);
+        //Check to see if interaction is working
+          //console.log(bullsEye);
         //If the value of variable danger is less than the value of variable bullsEye it means the two objects are intersecting
         if( danger < bullsEye){
-          //If the mouseIsPressed while the two objects are intersecting, the statement evaluates true
+          //If the if statment evaluates as true the reactToDanger method is called
           currentCow.reactToDanger();
 
       }
@@ -167,6 +169,8 @@ class Animal{
     //Movement variables and values
     this.deltaX = 1.0;
     this.deltaY = 1.0;
+
+    //Assigns value of false to this.disappeared
     this.disappeared = false;
   }
 
@@ -177,7 +181,9 @@ class Animal{
     this.y += this.deltaY;
   }
   reactToDanger(){
-    //console.log("mooh!");
+    //Check to make sure interaction is working
+      //console.log("mooh!");
+    //Changes this.disappeared value from false to true
     this.disappeared = true;
   }
   //Creates new class method
@@ -195,6 +201,8 @@ class Animal{
     if( this.y <= 100 || this.y >= 600 ){
       this.deltaY = this.deltaY * shock;
     }
+    //Lines 199 through 210 fix bug where cows would occaisionally get stuck outside of perimeter
+    //If this.x or this.y are outside of perimeter they are redrawn inside
     if( this.x > 600){
       this.x = 599;
     }
@@ -213,6 +221,7 @@ class Animal{
 //Requires two arguments to fill its two parameters
   //Taken from Week 12 Bouncing Balls example on class webpage
 avoid( otherCows, self ){
+  //Creates two empty arrays
   let effectsX = [];
   let effectsY = [];
   //Checks through all elements of array
@@ -225,28 +234,38 @@ avoid( otherCows, self ){
         let meet = this.r + otherCows[i].r;
           //If the value of variable 'd' is less than or equal to the value of variable 'meet' the if statment evaluates true
           if ( d <= meet ) {
-            //Reverses object's direction causing objects to bounce off of each other
-            //this.deltaX *= -1;
-            //this.deltaY *= -1;
-            //---
+            //Adds value of this.x - otherCows[i].x to effectsX array
             effectsX.push( this.x - otherCows[i].x);
+            //Adds value of this.y - otherCows[i].y to effectsY array
             effectsY.push( this.y - otherCows[i].y);
       }
     }
+    //Creates new variables and assigns initial values of 0
     let addedEffectsX =0.0;
     let addedEffectsY =0.0;
+    //Modifies values of addedEffectsX and addedEffectsY for all elements in effectsX and effectsY arrays
     for (let i = 0; i < effectsX.length; i++) {
+      //Values of addedEffectX and array element i in effectsX array are added together
       addedEffectsX += effectsX[i];
+      //Values of addedEffectY and array element in in effectsY array are added together
       addedEffectsY += effectsY[i];
     }
+    //Creates new variable and assigns initial value of the product of added EffectsX divided by length of effectsX array
     let meanEffectX = addedEffectsX / effectsX.length;
+    //Creates new variable and assigns initial value of the product of added EffectsY divided by length of effectsY array
     let meanEffectY = addedEffectsY / effectsY.length
+    //If mouseIsPressed evaluates to true lines 255 through 262 are run
     if (mouseIsPressed) {
-      console.log(meanEffectX);
+      //Check to see if meanEffectX is being calculated or not
+        //console.log(meanEffectX);
     }
+    //meanEffectX/Y are again modified by multiplying their current value of 0.01
     meanEffectX *= 0.01;
     meanEffectY *= 0.01;
+    //If loop prevents lines 250 and 252 from dividing by zero which crashes the program
+    //Only runs if length of effectsX array is larger than 0
     if (effectsX.length > 0) {
+      //Modifies this.deltaX and this.deltaY by adding value of variables meanEffectX and meanEffectY to this.deltaX and this.deltaY
       this.deltaX += meanEffectX;
       this.deltaY += meanEffectY;
     }
@@ -255,9 +274,12 @@ avoid( otherCows, self ){
 }
 
 //Creates new class method
+//Prevents cows from speeding up too much
 calmDown(){
+  //Creates new variable and assigns it the distance between 0 0 and this.deltaX and this.deltaY
   let speed = dist( 0, 0, this.deltaX, this.deltaY );
-  if( speed > 2)// && speed < 1 )
+  //If the value of speed is greater than 2 lines 290 and 281 modify value of this.deltaX and this.deltaY
+  if( speed > 2)
   {
     this.deltaX *= 0.8;
     this.deltaY *= 0.8;
@@ -267,8 +289,9 @@ calmDown(){
 
 //Creates new class method
   populate(){
-    //Creates new ellipse at this.x, this.y, and this.r location with a fill color of white
+    //If this.disappeared does not equal, false, then the program runs lines 293 through 296
     if(!this.disappeared){
+      //Creates new ellipse at this.x, this.y, and this.r location with a fill color of white
       ellipseMode(CENTER);
       noStroke();
       fill( 'white' );
@@ -287,7 +310,7 @@ class Farmer{
     this.y = y;
     this.r = r;
 
-    this.vis = this.vis;
+    this.visR = 200;
     //Movement variables and values
     this.deltaX = 2;
     this.deltaY = 2;
@@ -325,6 +348,6 @@ class Farmer{
     fill( 'blue' );
     ellipse( this.x, this.y, this.r );
 
-    this.vis = triangle( this.x, this.y, this.x + 50, this.y + 100, this.x - 50, this.y + 100 );
+    ellipse(this.x + 100, this.y + 20, this.visR );
   }
 }
