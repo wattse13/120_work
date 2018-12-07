@@ -45,24 +45,25 @@ function draw(){
   quad( 100, 100, 600, 100, 600, 600, 100, 600 )
 
   //Calls class methods for each element in the cows array
-  // for( var i = 0; i < cows.length; i++ ){
-  //   cows[i].walk();
-  //   cows[i].populate();
-  //   cows[i].electricFence();
-  //   cows[i].avoid( cows, i );
-  // }
+  for( var i = 0; i < cows.length; i++ ){
+    cows[i].walk();
+    cows[i].populate();
+    cows[i].electricFence();
+    cows[i].calmDown();
+    cows[i].avoid( cows, i );
+  }
 
 push();
   guy.patrol();
   guy.display();
-  setTimeout( guy.turn(), 1000 );
+  // setTimeout( guy.turn(), 1000 );
 pop();
 
   //Calls Ufo methods
-  // spaceShip.fly();
-  // spaceShip.abductionBeam();
-  // spaceShip.invade();
-  // spaceShip.dangerZone( cows [i], i )
+  spaceShip.fly();
+  spaceShip.abductionBeam();
+  spaceShip.invade();
+  spaceShip.dangerZone(cows)
 }
 
 /******************************************************************************/
@@ -98,11 +99,11 @@ class Ufo{
       //If a direction key is pressed then the value of this.x or this.y are modified by the value of the throttle variable
     if( keyIsDown( RIGHT_ARROW ) ){
       this.x += throttle;
-    }else if( keyIsDown( LEFT_ARROW ) ){
+    } if( keyIsDown( LEFT_ARROW ) ){
       this.x -= throttle;
-    }else if( keyIsDown( UP_ARROW ) ){
+    } if( keyIsDown( UP_ARROW ) ){
       this.y -= throttle;
-    }else if( keyIsDown( DOWN_ARROW ) ){
+    } if( keyIsDown( DOWN_ARROW ) ){
       this.y += throttle;
     }
   }
@@ -121,23 +122,22 @@ class Ufo{
   //Creates new class method which needs two arguments to fill its two parameters
     //Currently not working
     //Supposed to use nested if statements to check if the mouse is clicked while two objects intersect
-  dangerZone( themCows, self ){
-    //Checks all elements stored in themCows array
-    for( let i = 0; i < themCows.length; i++){
-      //Excludes current object from returning true when it intersects with itself
-      if( i != self ){
+  dangerZone( themCows ){
+    if( mouseIsPressed){
+      //Checks all elements stored in themCows array
+      for( let i = 0; i < themCows.length; i++){
+        let currentCow = themCows[i];
         //Creates new variable and assigns it the distance between this.x this.y and themCows[i].x themCows[i].y
-        let danger = dist( this.x, this.y, themCows[i].x, themCows[i].y )
+        let danger = dist( this.x, this.y, currentCow.x, currentCow.y )
+        //console.log(danger);
         //Creates new varaible and assigns it the value of the sum of abductionSize.r + themCows[i].r
-        let bullsEye = abductionSize.r + themCows[i].r
+        let bullsEye = this.abductionSize + currentCow.r;
+        //console.log(bullsEye);
         //If the value of variable danger is less than the value of variable bullsEye it means the two objects are intersecting
         if( danger < bullsEye){
           //If the mouseIsPressed while the two objects are intersecting, the statement evaluates true
-          if( mouseIsPressed){
-            return true;
-          }else{
-            return false;
-        }
+          currentCow.reactToDanger();
+
       }
     }
   }
@@ -165,8 +165,9 @@ class Animal{
     this.r = this.size / 2;
 
     //Movement variables and values
-    this.deltaX = 1;
-    this.deltaY = 1;
+    this.deltaX = 1.0;
+    this.deltaY = 1.0;
+    this.disappeared = false;
   }
 
   //Creates new class method
@@ -175,7 +176,10 @@ class Animal{
     this.x += this.deltaX;
     this.y += this.deltaY;
   }
-
+  reactToDanger(){
+    //console.log("mooh!");
+    this.disappeared = true;
+  }
   //Creates new class method
   electricFence(){
 
@@ -191,12 +195,26 @@ class Animal{
     if( this.y <= 100 || this.y >= 600 ){
       this.deltaY = this.deltaY * shock;
     }
+    if( this.x > 600){
+      this.x = 599;
+    }
+    if( this.x < 100 ){
+      this.x = 101;
+    }
+    if( this.y > 600 ){
+      this.y = 599;
+    }
+    if( this.y < 100 ){
+      this.y = 101;
+    }
   }
 
 //Creates new class method
 //Requires two arguments to fill its two parameters
   //Taken from Week 12 Bouncing Balls example on class webpage
 avoid( otherCows, self ){
+  let effectsX = [];
+  let effectsY = [];
   //Checks through all elements of array
   for( let i = 0; i < otherCows.length; i++){
     //If element being checked is not itself, the program moves on to the next if loop
@@ -208,25 +226,54 @@ avoid( otherCows, self ){
           //If the value of variable 'd' is less than or equal to the value of variable 'meet' the if statment evaluates true
           if ( d <= meet ) {
             //Reverses object's direction causing objects to bounce off of each other
-            this.deltaX *= -1;
-            this.deltaY *= -1;
+            //this.deltaX *= -1;
+            //this.deltaY *= -1;
+            //---
+            effectsX.push( this.x - otherCows[i].x);
+            effectsY.push( this.y - otherCows[i].y);
       }
     }
+    let addedEffectsX =0.0;
+    let addedEffectsY =0.0;
+    for (let i = 0; i < effectsX.length; i++) {
+      addedEffectsX += effectsX[i];
+      addedEffectsY += effectsY[i];
+    }
+    let meanEffectX = addedEffectsX / effectsX.length;
+    let meanEffectY = addedEffectsY / effectsY.length
+    if (mouseIsPressed) {
+      console.log(meanEffectX);
+    }
+    meanEffectX *= 0.01;
+    meanEffectY *= 0.01;
+    if (effectsX.length > 0) {
+      this.deltaX += meanEffectX;
+      this.deltaY += meanEffectY;
+    }
+
   }
 }
 
 //Creates new class method
-getGot(){
+calmDown(){
+  let speed = dist( 0, 0, this.deltaX, this.deltaY );
+  if( speed > 2)// && speed < 1 )
+  {
+    this.deltaX *= 0.8;
+    this.deltaY *= 0.8;
+  }
 
 }
 
 //Creates new class method
-populate(){
-  //Creates new ellipse at this.x, this.y, and this.r location with a fill color of white
-  ellipseMode(CENTER);
-  noStroke();
-  fill( 'white' );
-  ellipse( this.x, this.y, this.r );
+  populate(){
+    //Creates new ellipse at this.x, this.y, and this.r location with a fill color of white
+    if(!this.disappeared){
+      ellipseMode(CENTER);
+      noStroke();
+      fill( 'white' );
+      ellipse( this.x, this.y, this.r );
+    }
   }
 }
 
@@ -267,11 +314,7 @@ class Farmer{
 
   //Creates new class method
   turn(){
-
-    if( ( this.x <= 100 || this.x >= 600 ) || ( this.y <= 100 || this.y >= 600 ) ){
-      rotate( radians( 45 ) );
-      guy.display();
-    }
+    rotate( radians( random( 0, 360 ) ) );
   }
 
   //Creates new class method
