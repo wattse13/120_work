@@ -42,9 +42,9 @@ class Farmer{
     if( mouseIsPressed ){
       // for( let i = 0; i < themAliens.length; i++){
         // let currentAlien = themAliens[i];
-        let damnedAliens = dist( this.x, this.y, this.themAliensX, this.themAliensY );
+        let damnedAliens = dist( this.x, this.y, themAliens.x, themAliens.y );
           // console.log( damnedAliens );
-        let gotcha = this.r + this.themAliensR;
+        let gotcha = this.r + themAliens.r;
           // console.log( gotcha );
         if( damnedAliens < gotcha ){
           themAliens.runAway();
