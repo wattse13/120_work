@@ -10,7 +10,7 @@ class Ufo{
     //Assigns value of 100 to this instance of variable abductionSize
     this.abductionSize = 50;
     //Assigns value of half of value of abductionSize to this instance of variable abductionR
-    this.abductionR = this.abductionSize / 2;
+    // this.abductionR = this.abductionSize / 2;
 
     //This instance of deltaX and deltaY are assigned values of 3
     this.deltaX = 3;
@@ -76,7 +76,7 @@ class Ufo{
 
   //Creates new class method
   runAway(){
-    console.log("Bye");
+    // console.log("Bye");
     this.flyOff = true;
   }
 

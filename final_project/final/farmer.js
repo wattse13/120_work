@@ -6,11 +6,11 @@ class Farmer{
     //Assigns this.x, this.y, and this.r new variables
     this.x = x;
     this.y = y;
-    this.r = r;
+    this.r = 20;
 
     this.visX = this.x + 100;
     this.visY = this.y + 20;
-    this.visR = 200;
+    this.visR = 50;
     //Movement variables and values
     this.deltaX = 2;
     this.deltaY = 2;
@@ -44,7 +44,7 @@ class Farmer{
         // let currentAlien = themAliens[i];
         let damnedAliens = dist( this.x, this.y, themAliens.x, themAliens.y );
           // console.log( damnedAliens );
-        let gotcha = this.r + themAliens.r;
+        let gotcha = this.visR + themAliens.r;
           // console.log( gotcha );
         if( damnedAliens < gotcha ){
           themAliens.runAway();
