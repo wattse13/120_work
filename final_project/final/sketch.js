@@ -1,4 +1,13 @@
 /******************************************************************************/
+//Final project
+//Created by Eli Watts 
+//Alien Disaster on Uncle Farmer's Farm
+//Spaceship is controlable with arrow keys
+//Mouse click activates the abduction beam
+//Try to abduct all cows, the white dots, without being caught!
+/******************************************************************************/
+
+/******************************************************************************/
 //Global variables
 /******************************************************************************/
 
@@ -53,12 +62,12 @@ function draw(){
     cows[i].avoid( cows, i );
   }
 
-push();
+// push();
   guy.patrol();
   guy.display();
   guy.sawSomething( spaceShip );
-  // setTimeout( guy.heardSomething, 1000 );
-pop();
+  // setInterval( guy.heardSomething(), 10000 );
+// pop();
 
   //Calls Ufo methods
   spaceShip.fly();

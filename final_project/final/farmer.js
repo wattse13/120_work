@@ -53,18 +53,34 @@ class Farmer{
     }
   }
 
-  //Creates new class method
+  // Creates new class method
   heardSomething(){
-    rotate( radians( random( 0, 360 ) ) );
+    
+    push();
+
+      let rotateAngle = random( 0, 360 );
+
+      ellipseMode( CENTER );
+      stroke( 10 );
+      noFill();
+      translate( this.x, this.y );
+      rotate( radians( rotateAngle ) );
+      ellipse( this.visX, this.visY, this.visR );
+
+    pop();
+
   }
 
   //Creates new class method
   display(){
-    ////Creates new ellipse at this.x, this.y, and this.r location with a fill color of blue
-    ellipseMode(CENTER);
-    noStroke();
-    fill( 'blue' );
-    ellipse( this.x, this.y, this.r );
+    // push();
+      //Creates new ellipse at this.x, this.y, and this.r location with a fill color of blue
+      rectMode(CENTER);
+      noStroke();
+      fill( 'blue' );
+      // translate( this.x, this.y );
+      rect( this.x, this.y, this.r, this.r );
+    // pop();
 
     // ellipse(this.visX, this.visY, this.visR );
   }

@@ -62,7 +62,7 @@ class Ufo{
         //Check to see if interaction is working
           //console.log(danger);
         //Creates new varaible and assigns it the value of the sum of abductionSize.r + themCows[i].r
-        let bullsEye = this.abductionSize + currentCow.r;
+        let bullsEye = (this.abductionSize + currentCow.r) - 40;
         //Check to see if interaction is working
           //console.log(bullsEye);
         //If the value of variable danger is less than the value of variable bullsEye it means the two objects are intersecting
