@@ -7,7 +7,7 @@ class Ufo{
     this.x = x;
     this.y = y;
     this.r = r;
-    //Assigns value of 100 to this instance of variable abductionSize
+    //Assigns value of 50 to this instance of variable abductionSize
     this.abductionSize = 50;
     //Assigns value of half of value of abductionSize to this instance of variable abductionR
     // this.abductionR = this.abductionSize / 2;
@@ -16,6 +16,7 @@ class Ufo{
     this.deltaX = 3;
     this.deltaY = 3;
 
+    //Assigns Boolean value of false
     this.flyOff = false;
   }
 
@@ -42,7 +43,7 @@ class Ufo{
   abductionBeam(){
     //Uses boolean logic to draw a new ellipse centered around the this.x and this.y point
     if( mouseIsPressed ){
-      fill( 'green' );
+      fill( 'red' );
       ellipseMode( CENTER );
       //Use of custom variables allows for the updating of shape position
       ellipse( this.x, this.y, this.abductionSize );
@@ -89,5 +90,10 @@ class Ufo{
       noStroke();
       fill( 'purple' );
       ellipse( this.x, this.y, this.r );
+      //Creates a new push pop sandbox so the ufo body color doesn't interfere with the ufo cockpit color
+      push();
+        fill( 'yellow' );
+        ellipse(this.x, this.y, 10 );
+      pop();
   }
 }

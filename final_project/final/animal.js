@@ -6,14 +6,13 @@ class Animal{
     //This.x, this.y, this.size, and this.r are all assigned to variables
     this.x = x;
     this.y = y;
-    // this.size = 40;
     this.r = 20;
 
     //Movement variables and values
-    this.deltaX = 1.0;
-    this.deltaY = 1.0;
+    this.deltaX = 1;
+    this.deltaY = 1;
 
-    //Assigns value of false to this.disappeared
+    //Assigns Boolean value of false to this.disappeared
     this.disappeared = false;
   }
 
@@ -44,7 +43,7 @@ class Animal{
     if( this.y <= 100 || this.y >= 600 ){
       this.deltaY = this.deltaY * shock;
     }
-    //Lines 199 through 210 fix bug where cows would occaisionally get stuck outside of perimeter
+    //Lines 47 through 59 fix bug where cows would occaisionally get stuck outside of perimeter
     //If this.x or this.y are outside of perimeter they are redrawn inside
     if( this.x > 600 ){
       this.x = 599;
@@ -84,8 +83,8 @@ avoid( otherCows, self ){
       }
     }
     //Creates new variables and assigns initial values of 0
-    let addedEffectsX =0.0;
-    let addedEffectsY =0.0;
+    let addedEffectsX = 0;
+    let addedEffectsY = 0;
     //Modifies values of addedEffectsX and addedEffectsY for all elements in effectsX and effectsY arrays
     for ( let i = 0; i < effectsX.length; i++ ) {
       //Values of addedEffectX and array element i in effectsX array are added together
@@ -98,14 +97,14 @@ avoid( otherCows, self ){
     //Creates new variable and assigns initial value of the product of added EffectsY divided by length of effectsY array
     let meanEffectY = addedEffectsY / effectsY.length
     //If mouseIsPressed evaluates to true lines 255 through 262 are run
-    if ( mouseIsPressed ) {
-      //Check to see if meanEffectX is being calculated or not
-        //console.log(meanEffectX);
-    }
-    //meanEffectX/Y are again modified by multiplying their current value of 0.01
+    // if ( mouseIsPressed ) {
+    //   //Check to see if meanEffectX is being calculated or not
+    //     //console.log(meanEffectX);
+    //   }
+    //meanEffectX/Y are again modified by multiplying their current value by 0.01
     meanEffectX *= 0.01;
     meanEffectY *= 0.01;
-    //If loop prevents lines 250 and 252 from dividing by zero which crashes the program
+    //If loop prevents lines 96 and 98 from dividing by zero which crashes the program
     //Only runs if length of effectsX array is larger than 0
     if ( effectsX.length > 0 ) {
       //Modifies this.deltaX and this.deltaY by adding value of variables meanEffectX and meanEffectY to this.deltaX and this.deltaY
@@ -124,6 +123,7 @@ calmDown(){
   //If the value of speed is greater than 2 lines 290 and 281 modify value of this.deltaX and this.deltaY
   if( speed > 2)
   {
+    //Modifies value of this.deltaX and this.deltaY
     this.deltaX *= 0.8;
     this.deltaY *= 0.8;
   }

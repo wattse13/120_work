@@ -1,6 +1,6 @@
 /******************************************************************************/
 //Final project
-//Created by Eli Watts 
+//Created by Eli Watts
 //Alien Disaster on Uncle Farmer's Farm
 //Spaceship is controlable with arrow keys
 //Mouse click activates the abduction beam
@@ -25,8 +25,8 @@ function setup(){
   createCanvas( 700, 700 );
 
   //Stores objects based on Animal class as elements in cows array
-  //If the value of i is less than _, a new object is added to the cows array
-    //Repreated until the value of 'i' is no longer less than _
+  //If the value of i is less than 10, a new object is added to the cows array
+    //Repreated until the value of 'i' is no longer less than 10
   for ( i = 0; i < 10; i++ ){
     //Cow objects are given random starting location and beginning size of 30 pixels
     cows[i] = new Animal( random( 100, 600 ), random( 100, 600 ), 20 );
@@ -49,7 +49,7 @@ function draw(){
   background( 'black' );
 
   //Sets fill color to brown
-  fill( 'brown' );
+  fill( 'green' );
   //Draws new square shape
   quad( 100, 100, 600, 100, 600, 600, 100, 600 )
 
@@ -62,6 +62,7 @@ function draw(){
     cows[i].avoid( cows, i );
   }
 
+//Calls Farmer methods
 // push();
   guy.patrol();
   guy.display();

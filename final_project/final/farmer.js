@@ -2,15 +2,17 @@
 class Farmer{
 
   //Class requires its three parameters are filled with three arguments when first called
-  constructor( x, y, r ){
+  constructor( x, y, size ){
     //Assigns this.x, this.y, and this.r new variables
     this.x = x;
     this.y = y;
     this.r = 20;
 
+    //Planned on using these for a second 'vision' ellipse where the farmer-object and ufo-object interaction would occur
     this.visX = this.x + 100;
     this.visY = this.y + 20;
     this.visR = 50;
+
     //Movement variables and values
     this.deltaX = 2;
     this.deltaY = 2;
@@ -55,7 +57,7 @@ class Farmer{
 
   // Creates new class method
   heardSomething(){
-    
+
     push();
 
       let rotateAngle = random( 0, 360 );
