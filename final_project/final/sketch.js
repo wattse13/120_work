@@ -67,7 +67,7 @@ function draw(){
   guy.patrol();
   guy.display();
   guy.sawSomething( spaceShip );
-  // setInterval( guy.heardSomething(), 10000 );
+  // setInterval( guy.heardSomething(), 2000 );
 // pop();
 
   //Calls Ufo methods

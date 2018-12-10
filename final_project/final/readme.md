@@ -123,6 +123,19 @@ For better readability each class has its own separate js file which are request
 
 There are two core features that do not work: the Ufo-object and Farmer object interaction and the Farmer heardSomething method.
 Of the two, I am most confused by why the Ufo-object and Farmer object interaction does not work. I reused the same code from the functioning Ufo-object and Animal object interaction. Just as the dangerZone method references the position of the elements in the otherCows array and references the animal-based objects with an argument when called in the sketch.js, the sawSomething method references the Ufo-object in the same ways. Similarly, the Ufo runAway and invade Methods are written the same way as the Animal reactToDanger and populate methods. I am convinced that all the pieces are present, but a small detail is preventing the interaction from working.
+A possible work around may be to turn the Farmer-object and Ufo-object into elements in seperate arrays and then only create one element of each. This would then let me copy and paste the code almost directly from the working methods. However, doing so feels a bit 'hacky' and I would like to know how to do it the 'right' way.
 The Farmer heardSomething method was supposed to work with the setInterval function to rotate the farmer-object, and therefore the farmer-objects field of view, at a set interval of time. This would in theory force the player to be more careful when trying to abduct the cows. While I was able to get the farmer-object to rotate, I was unable to successfully implement the timed interval. Instead of rotating once every two seconds, the farmer-object rotated every new frame which quickly crashed the program. I tried using the techniques used in [this video]( https://www.youtube.com/watch?v=CqDqHiamRHA&t=266s) to implement the interval function.
 
 ## Getting Help and Helping Others
+
+Unfortunately, I was not able to help many of classmates out wit their final projects. In one of NathanielHagen’s threads I pointed out a missed ‘}’ but I don’t think that solved their issue.
+
+I also tried to help out erinflint with their project. As of writing this I don’t know if my suggestions helped.
+
+And lastly, I tried helping mprimeau1 with a question about button making. While I think I correctly described how to make an object aware if it is being clicked on or not, I was unable to give any suggestions about playing sound files. 
+
+I tried a couple methods for getting help for myself. Sometime in week 12 I posted an issue forum about multiclass object interactions. There I got some great help from my classmate spkv. While we did not come to a working solution, I was able to use some of the trial and error form our previous conversations when looking for a new solution. On the 18th of November I emailed Stephanie, but I think my email may have been lost as I never received a response. On the 3rd of December I emailed Emily who then, a couple of days later, shared my email with Professor Musick who gave me a couple of suggestions.
+
+## Closing Thoughts
+
+I don’t know if I should be proud of this project or not. On the one hand, it is only about two thirds functional. On the other hand, I am surprised by how far I have come since first beginning this semester. I may have set myself up for failure by integrating multiclass interactions, a technique I was unable to do correctly before beginning my final project, into most core features of my project. Because I spent so much time implement core features, I missed out on some things I was looking forward to, like replacing basic shapes with image files or adding sound effects. Either way, I am very happy that I took this class. It challenged me in ways I could not imagine beforehand, but I learned a lot and I am hoping to continue building on the skills I learned here.
